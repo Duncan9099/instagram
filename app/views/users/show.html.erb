@@ -8,5 +8,11 @@
     <% if @user.profile.attached? %>
       <img src="<%= (url_for(@user.profile))%>">
     <% end %>
+    <br>
+    <%= @posts.each do |post| %>
+      <% if post.post_picture.attached? %>
+        <img src="<%= (url_for(post.post_picture)) %>">
+      <% end %>
+    <% end %>
   </body>
 </html>

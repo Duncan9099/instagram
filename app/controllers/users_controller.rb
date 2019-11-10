@@ -4,12 +4,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @posts = Post.where(user_id: session[:user_id])
     @user.profile.attached?
   end
 
   def create
     @user = User.new(user_params)
-    # @user.profile.attach(params[:profile])
     @user.save
   end
 

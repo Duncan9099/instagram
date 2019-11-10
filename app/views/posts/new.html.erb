@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%= form_with scope: :post, url: posts_path, local: true do |form| %>
+
+    <p>
+      <%= form.label :post_picture %><br>
+      <%= form.file_field :post_picture %>
+    </p>
+
+    <p>
+      <%= form.label :content %><br>
+      <%= form.text_area :content%>
+    </p>
+
+    <p>
+      <%= form.submit :"Submit Post"%>
+    </p>
+    <% end %>
+  </body>
+</html>
