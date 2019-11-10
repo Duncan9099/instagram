@@ -3,10 +3,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: params[:id])
+    @user.profile.attached?
   end
 
   def create
     @user = User.new(user_params)
+    # @user.profile.attach(params[:profile])
     @user.save
   end
 
@@ -16,6 +19,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    {username: params[:username], email: params[:email], password: params[:password], profile_picture: params[:profile_picture]}
+      params.require(:user).permit(:username, :email, :password, :profile_picture, :profile)
   end
 end
