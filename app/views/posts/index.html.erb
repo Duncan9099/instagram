@@ -27,7 +27,7 @@
       <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
-            <%= @posts.each do |post| %>
+            <% @posts.each do |post| %>
               <% if post.post_picture.attached? %>
                 <div style="height:500px; overflow:hidden">
                   <img src="<%= (url_for(post.post_picture))%>">

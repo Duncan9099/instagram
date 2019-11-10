@@ -2,17 +2,44 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>User Profile</title>
+
+    <style>
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        overflow: hidden;
+      }
+    </style>
+
   </head>
   <body>
-    <% if @user.profile.attached? %>
-      <img src="<%= (url_for(@user.profile))%>">
-    <% end %>
-    <br>
-    <%= @posts.each do |post| %>
-      <% if post.post_picture.attached? %>
-        <img src="<%= (url_for(post.post_picture)) %>">
+    <div class="card text-center">
+      <div class="card-header">
+        <h3><%= @user.username %> </h3>
+      </div>
+      <div class="card-body">
+        <% if @user.profile.attached? %>
+          <img src="<%= (url_for(@user.profile))%>" style="margin-top:20px; height:350px; width:25%; border-radius:50%">
+        <% end %>
+        <br>
+        <p class="card-text">Add bio here......</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      <div class="card-footer text-muted">
+        <p><%= @posts.length %> post</p>
+      </div>
+    </div>
+      <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-4" style="overflow:hidden; height:400px; margin-bottom:10px">
+          <% if post.post_picture.attached? %>
+            <img src="<%= (url_for(post.post_picture)) %>">
+          <% end %>
+        </div>
       <% end %>
-    <% end %>
-  </body>
+      </div
+    </body>
 </html>
